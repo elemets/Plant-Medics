@@ -38,13 +38,13 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAZtQJbaGU-T4gnwfRj1suewPTIXDvqjV4" />
+            android:value="AIzaSyBuUexPXB1NKQhl9h2zdJ98raI9I50tn-4" />
 
 
 
         <activity
 
-            android:name=".plantActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
 
@@ -62,6 +62,11 @@
         />
 
         <activity
+            android:name=".plantActivity"
+            />
+
+
+        <activity
             android:name=".MainActivity"
             />
 
@@ -72,6 +77,10 @@
 
         <activity
             android:name=".MapsActivity"
+            />
+
+        <activity
+            android:name=".pointsActivity"
             />
 
 

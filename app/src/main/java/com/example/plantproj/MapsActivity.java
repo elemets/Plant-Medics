@@ -175,7 +175,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             i += 1;
             options.position(plants);
             options.title("Plant" + i);
-            options.snippet("Description");
+            options.snippet("Description:" + (LoginActivity.plantDatabase.get(i)));
             mMap.addMarker(options);
         }
     }

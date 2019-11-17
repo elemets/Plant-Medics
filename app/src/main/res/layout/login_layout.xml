@@ -7,16 +7,28 @@
     android:background="@drawable/bush_bg1"
     android:orientation="vertical">
 
+
     <ImageView
         android:id="@+id/imageViewlogo"
         android:layout_width="174dp"
         android:layout_height="149dp"
         android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
         android:layout_marginTop="50dp"
-        android:src="@drawable/bush_logocircle"
-        android:contentDescription="TODO" />
+        android:adjustViewBounds="true"
+        android:contentDescription="TODO"
+        android:scaleType="centerInside"
+        android:src="@drawable/bush_logocircle" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="italic"
+        android:text="Revive Local Agriculture, Reduce C02, Make Walking Exciting."
+        android:textAlignment="center" />
+
 
 
     <TextView
@@ -91,6 +103,16 @@
         android:background="@android:color/white"
 
         android:text="Sign Up" />
+
+    <Button
+        android:id="@+id/infopointsbutton"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_orange_dark"
+
+        android:text="Find out How to Rank Up as a PLANTMEDIC" />
 
 
     <com.airbnb.lottie.LottieAnimationView

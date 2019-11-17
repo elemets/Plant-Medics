@@ -26,7 +26,7 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#3db19e"
-            android:text="Add a Plant" />
+            android:text="Add a plant to care for" />
     </LinearLayout>
 
 
