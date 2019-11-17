@@ -56,7 +56,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Co2 Captured (Pounds): "
+        android:text="Co2 Captured [Pounds]: "
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/LoadingCompleteTextView"
         app:layout_constraintEnd_toEndOf="parent"
