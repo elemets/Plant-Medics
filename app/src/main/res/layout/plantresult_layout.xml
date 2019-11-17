@@ -39,10 +39,12 @@ android:contentDescription="TODO" />
         android:text="aahhhhhaahhhhh ahhhhh aahhhhh aahhhhh aahhhhh aahhhhh  "
         android:textAlignment="center" />
 
-
-
-
-
+    <Button
+        android:id="@+id/carePlantButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="Care for this plant" />
 
 
 </LinearLayout>

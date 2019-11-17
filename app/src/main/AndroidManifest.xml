@@ -68,6 +68,11 @@
             />
 
 
+        <activity
+            android:name=".MainActivity"
+            />
+
+
 
 
 
