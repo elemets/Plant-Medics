@@ -79,6 +79,10 @@
             android:name=".MapsActivity"
             />
 
+        <activity
+            android:name=".pointsActivity"
+            />
+
 
 
 
