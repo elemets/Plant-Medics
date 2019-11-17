@@ -42,7 +42,7 @@ public class plantResultsActivity extends AppCompatActivity {
 
     private void configureWiki(String wikiinfo) {
         TextView resultWiki = (TextView) findViewById(R.id.wikiBox);
-        resultWiki.setText(wikiinfo);
+        resultWiki.setText("Get more info about your find here" + wikiinfo);
     }
 
 

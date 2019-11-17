@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         setPlantName();
+
         //configureNextButton();
         configureWaterButton();
         //configureInfoButtion();
@@ -51,15 +54,26 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
 
-        if (plantType == "Tree") {
+        if (plantResultsActivity.plantInfo == "Tree") {
             incrementer = 7;
             Co2ConsumptionPerYear = 48; // how much co2 is absorbed in pounds every year
         }
 
-        dateAdded = setDate(16, 1, 2019);
+        if (plantResultsActivity.plantInfo == "dracaena") {
+            incrementer = 6;
+            Co2ConsumptionPerYear = 18;
+        }
+
+        if (plantResultsActivity.plantInfo == "") {
+            incrementer = 5;
+            Co2ConsumptionPerYear = 22;
+        }
+
+        // dateAdded = setDate(16, 1, 2019);
         dateOfLastWater = setDate(14, 11,2019);
         dateOfNextWater = setDateOfNextWater(dateOfLastWater, incrementer);
         currentDate = LocalDate.now();
+        dateAdded = currentDate;
 
         new Thread(new Runnable() {
             @Override
@@ -83,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     private void setPlantName() {
         final TextView daysLeftText = (TextView) findViewById(R.id.plantName);
         daysLeftText.setText(plantResultsActivity.plantInfo);
+        LoginActivity.plantDatabase.add(plantResultsActivity.plantInfo);
     }
 
     private void updateDaysLeft(LocalDate currentDate, LocalDate dateOfNextWater) {
