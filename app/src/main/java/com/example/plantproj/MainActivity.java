@@ -1,6 +1,7 @@
 package com.example.plantproj;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,11 +18,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
     private TextView mLoadingText;
-    private LottieAnimationView waterAnimation;
 
     private int mProgressStatus;
     private double co2Captured = 0;
@@ -42,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configureNextButton();
+        setPlantName();
+        //configureNextButton();
         configureWaterButton();
+        //configureInfoButtion();
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
@@ -75,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
         updateDaysLeft(currentDate, dateOfNextWater);
         updateCo2Absorbed(dateAdded, Co2ConsumptionPerYear, co2Captured);
+    }
+
+    private void setPlantName() {
+        final TextView daysLeftText = (TextView) findViewById(R.id.plantName);
+        daysLeftText.setText(plantResultsActivity.plantInfo);
     }
 
     private void updateDaysLeft(LocalDate currentDate, LocalDate dateOfNextWater) {
@@ -115,15 +123,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void configureNextButton() {
-        Button nextButton = (Button) findViewById(R.id.nextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Main2Activity.class));
-            }
-        });
-    } // configureNextButtion
+//    private void configureNextButton() {
+//        Button nextButton = (Button) findViewById(R.id.nextButton);
+//        nextButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, Main2Activity.class));
+//            }
+//        });
+//    } // configureNextButtion
+
+
+//     private void configureInfoButtion() {
+//        String url = plantResultsActivity.plantWiki;
+//        String urlActual = url.substring(6);
+//        System.out.println(urlActual);
+//        Uri uri = Uri.parse(urlActual);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//
+//     }
 
 
     private LocalDate setDate(int day, int month, int year) {
