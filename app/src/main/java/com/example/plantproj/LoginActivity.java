@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, plantActivity.class));
+                startActivity(new Intent(LoginActivity.this, MapsActivity.class));
             }
         });
     } // configureNextButtion
