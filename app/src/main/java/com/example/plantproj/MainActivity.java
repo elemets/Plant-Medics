@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
 
-        if (plantType == "Tree") {
+        if (plantResultsActivity.plantInfo == "Tree") {
             incrementer = 7;
             Co2ConsumptionPerYear = 48; // how much co2 is absorbed in pounds every year
         }
