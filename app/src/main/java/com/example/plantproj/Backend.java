@@ -29,14 +29,14 @@ class Backend {
     private static final String API_KEY = "HALP1tZVsFTpIGfQeEyBeETzcN1lfcZ0W15ACStMhCBXPhD1hy";
     private static final int UPLOAD_IMAGE_SIZE = 1024;
     private Context context;
-    static private MainActivity activity;
+    static private MLActivity activity;
 
     private final RequestQueue queue;
 
 
-    Backend(MainActivity mainActivity) {
-        activity = mainActivity;
-        context = mainActivity;
+    Backend(MLActivity MLActivity) {
+        activity = MLActivity;
+        context = MLActivity;
         queue = Volley.newRequestQueue(context);
     }
 

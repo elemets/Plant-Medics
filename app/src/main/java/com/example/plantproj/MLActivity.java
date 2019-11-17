@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MLActivity extends AppCompatActivity {
 
     private static final int REQUEST_PHOTO_FROM_GALLERY = 0;
     private static final int REQUEST_PERMISSIONS = 666;
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> images = new ArrayList<>();
     private Backend backend;
     private int identificationId;
+    public static List<String> plantResults = new ArrayList<String>();
 
     private Handler handler = new Handler();
 
@@ -33,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login_layout);
 
-        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        if (ActivityCompat.checkSelfPermission(MLActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MLActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         }
 
         backend = new Backend(this);
@@ -48,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= 18){
             photoPickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         }
-        startActivityForResult(photoPickerIntent, MainActivity.REQUEST_PHOTO_FROM_GALLERY);
+        startActivityForResult(photoPickerIntent, MLActivity.REQUEST_PHOTO_FROM_GALLERY);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK && requestCode == MainActivity.REQUEST_PHOTO_FROM_GALLERY) {
+        if (resultCode == Activity.RESULT_OK && requestCode == MLActivity.REQUEST_PHOTO_FROM_GALLERY) {
             if (android.os.Build.VERSION.SDK_INT >= 18 && data.getClipData() != null) {
                 ClipData clipdata = data.getClipData();
                 for (int i = 0; i < clipdata.getItemCount(); i++) {
@@ -96,9 +97,18 @@ public class MainActivity extends AppCompatActivity {
         handler.removeCallbacks(checkIdentification);  // stop periodic check
 
         for (String suggestion: suggestions){
-            Log.d("suggestion", suggestion);
+            plantResults.add(suggestion);
+            Log.d("name to joe", suggestion);
+
+
 
         }
+
+        Intent intent = new Intent(getApplicationContext(), plantResultsActivity.class);
+        startActivity(intent);
+
+
+
     }
 
     /* task for periodic check of identification */
