@@ -25,6 +25,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.reflect.Array;
@@ -67,12 +68,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             latitude = location.getLatitude();
             longitude = location.getLongitude();
 
+
+
         } else {
 
             Log.i("Location Info", "No location :(");
 
         }
-
 
 
 
@@ -117,7 +119,51 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
                 17));
 
+        Toast locationToast = Toast.makeText(getApplicationContext(), String.valueOf(latitude) + String.valueOf(longitude), Toast.LENGTH_LONG);
+        locationToast.show();
 
+
+        ArrayList<LatLng> latlngs = new ArrayList<>();
+        MarkerOptions options = new MarkerOptions();
+        // gather nearby plant data
+
+        ArrayList<LatLng> DataBase = new ArrayList<>();
+
+
+        DataBase.add(new LatLng(53.47, -2.2508383));
+        DataBase.add(new LatLng(53.47045, -2.204526));
+        DataBase.add(new LatLng(53.47045, -2.24052));
+        DataBase.add(new LatLng(53.471, -2.2507));
+
+        LatLng userLocationLatLng = new LatLng(latitude, longitude);
+
+
+        // for all plants in the database
+        for (LatLng plants : DataBase) {
+            // if they are greater than 2.5 kilometres away then add them to the array list
+            // this array list will later be used to populate the map.
+            if((HaverSineFormula(userLocationLatLng, plants)) < 5) {
+                latlngs.add(plants);
+            }
+        }
+
+        LatLng plantSpot = new LatLng(55.0, -2.0);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(plantSpot);
+
+        markerOptions.title(plantSpot.latitude + ":" + plantSpot.longitude);
+
+        mMap.addMarker(markerOptions);
+
+        int i = 0;
+        for (LatLng plants : latlngs){
+            i += 1;
+            options.position(plants);
+            options.title("Plant" + i);
+            options.snippet("Description");
+            mMap.addMarker(options);
+        }
     }
 
 
