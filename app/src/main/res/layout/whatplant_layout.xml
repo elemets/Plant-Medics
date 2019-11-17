@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bush_bg1">
 
@@ -40,6 +43,8 @@ android:contentDescription="TODO" />
         android:text="SEARCH BY PHOTO" />
 
 
+
+
     <Button
         android:id="@+id/backbutton"
         android:layout_width="200dp"
@@ -47,8 +52,26 @@ android:contentDescription="TODO" />
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@android:color/white"
-
         android:text="goback" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/growing"
+        tools:layout_editor_absoluteX="406dp"
+        tools:layout_editor_absoluteY="666dp" />
+
+
+
+
+
+
+
 
 
 
