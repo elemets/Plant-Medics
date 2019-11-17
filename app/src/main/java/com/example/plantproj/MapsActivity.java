@@ -48,10 +48,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         try {
-            Class.forName("con.mysql.jbc.Driver").newInstance();
+            Class.forName("con.mysql.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection("jdbc:mysql://bushboys.caeqszm3zbab.eu-west-2.rds.amazonaws.com", "admin", "hushboys123");
             PreparedStatement statement = conn.prepareStatement("SELECT first_name FROM users WHERE userID = 1");
             ResultSet result = statement.executeQuery();
+            int i = 0;
 
             while (result.next()) {
                 System.out.println("Hello here is some information" + result.getString("first_name"));
