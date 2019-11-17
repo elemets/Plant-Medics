@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='PlantProj'
+rootProject.name='switchingActivities'

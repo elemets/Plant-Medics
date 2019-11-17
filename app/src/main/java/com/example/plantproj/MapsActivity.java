@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.multidex.MultiDex;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -15,6 +16,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import android.Manifest;
 
@@ -33,7 +36,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     String Latitude;
@@ -41,28 +44,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double longitude = 0;
     double latitude = 0;
     String provider;
+    Button addAPlantButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        try {
-            Class.forName("con.mysql.jdbc.Driver").newInstance();
-            Connection conn = DriverManager.getConnection("jdbc:mysql://bushboys.caeqszm3zbab.eu-west-2.rds.amazonaws.com", "admin", "hushboys123");
-            PreparedStatement statement = conn.prepareStatement("SELECT first_name FROM users WHERE userID = 1");
-            ResultSet result = statement.executeQuery();
-            int i = 0;
-
-            while (result.next()) {
-                System.out.println("Hello here is some information" + result.getString("first_name"));
-                //customerInfo = customerInfo + result.getString("name") + "&" + result.getString("C_ID") + "&" + result.getString("address") + "&" + result.getString("email");
-            }
-        } catch (Exception exc) {
-            System.out.println(exc.getMessage());
-        }
-
         setContentView(R.layout.activity_maps);
+
+        configureNextButton();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -93,6 +84,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
+    }
+
+    private void configureNextButton() {
+        addAPlantButton = (Button) findViewById(R.id.AddAPlant);
+        addAPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MapsActivity.this, plantActivity.class));
+            }
+        });
     }
 
 
