@@ -12,7 +12,7 @@ public class HardCode {
         //Make 2 new plants
 
         Plants plant1 = new Plants("Tree", 7);
-        Plants plant2 = new Plants("Dracaena", 7);
+        Plants plant2 = new Plants("Dracaena", 6);
 
         //Put plants in hashmap and set location
 
