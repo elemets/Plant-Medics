@@ -6,12 +6,14 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +32,9 @@ class Backend {
     private static final int UPLOAD_IMAGE_SIZE = 1024;
     private Context context;
     static private MLActivity activity;
+    public static List<String> plantWikis= new ArrayList<String>();
+    public static String wikiFinal;
+
 
     private final RequestQueue queue;
 
@@ -106,6 +111,14 @@ class Backend {
                 @Override
                 public void onResponse(String response) {
                     Log.d("check", response);
+                    String wikiV = response.split(",")[16];
+                    if (wikiV != "\"feedback\": null") {
+                        wikiFinal = wikiV;
+                        System.out.println("system just sent the value:" + wikiV);
+                    }
+
+                    //Log.d("check", list());
+
                     try {
                         JSONObject json = new JSONArray(new JSONTokener(response)).getJSONObject(0);
                         JSONArray suggestions = json.getJSONArray("suggestions");
