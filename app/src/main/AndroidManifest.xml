@@ -44,7 +44,7 @@
 
         <activity
 
-            android:name=".LoginActivity"
+            android:name=".plantActivity"
             android:label="@string/app_name">
             <intent-filter>
 
@@ -62,7 +62,7 @@
         />
 
         <activity
-            android:name=".plantActivity"
+            android:name=".MainActivity"
             />
 
         <activity

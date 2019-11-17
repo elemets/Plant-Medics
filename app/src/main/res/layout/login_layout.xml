@@ -93,6 +93,21 @@
         android:text="Sign Up" />
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/growing"
+        tools:layout_editor_absoluteX="406dp"
+        tools:layout_editor_absoluteY="666dp" />
+
+
+
+
 
 
 
