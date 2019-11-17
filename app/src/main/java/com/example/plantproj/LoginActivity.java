@@ -22,11 +22,14 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         configureNextButton();
+        configureInfo();
+
+        // will be used for area
         plantDatabase.add("Dracena");
         plantDatabase.add("Monstera Deliciosa");
         plantDatabase.add("Hectors Spinefiled");
         plantDatabase.add("Red Marram");
-        plantDatabase.add("Cactus");
+        plantDatabase.add("English Vine");
 
 
 
@@ -44,5 +47,19 @@ public class LoginActivity extends Activity {
             }
         });
     } // configureNextButtion
+
+
+    private void configureInfo() {
+        Button infopButton = (Button) findViewById(R.id.infopointsbutton);
+        infopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, pointsActivity.class));
+            }
+        });
+    } // configureNextButtion
+
+
+
 
 }
