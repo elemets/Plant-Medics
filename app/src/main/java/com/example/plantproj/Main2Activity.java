@@ -1,10 +1,10 @@
-package com.example.switchingactivities;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.plantproj;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Main2Activity extends AppCompatActivity {
 

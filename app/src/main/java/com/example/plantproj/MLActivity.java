@@ -98,7 +98,7 @@ public class MLActivity extends AppCompatActivity {
 
         for (String suggestion: suggestions){
             plantResults.add(suggestion);
-            Log.d("name to joe", suggestion);
+            // Log.d("name to joe", suggestion);
 
 
 

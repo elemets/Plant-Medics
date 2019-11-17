@@ -7,6 +7,8 @@ import android.widget.TextView;
 public class plantResultsActivity extends Activity {
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,8 +18,14 @@ public class plantResultsActivity extends Activity {
 
 
         String plantInfo = MLActivity.plantResults.get(0);
+        String plantWiki= Backend.wikiFinal;
+
+        // String plantWiki = MLActivity.W
         configureResults(plantInfo);
+        configureWiki(plantWiki);
+
         MLActivity.plantResults.clear();
+        Backend.plantWikis.clear();
 
 
 
@@ -30,6 +38,11 @@ public class plantResultsActivity extends Activity {
     private void configureResults(String plantinfo) {
         TextView resultText = (TextView) findViewById(R.id.resultBox);
         resultText.setText(plantinfo);
+    }
+
+    private void configureWiki(String wikiinfo) {
+        TextView resultWiki = (TextView) findViewById(R.id.wikiBox);
+        resultWiki.setText(wikiinfo);
     }
 
 
