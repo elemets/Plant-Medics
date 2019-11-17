@@ -1,4 +1,5 @@
 package com.example.switchingactivities;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
@@ -16,15 +17,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
     private TextView mLoadingText;
+    private LottieAnimationView waterAnimation;
 
     private int mProgressStatus;
     private double co2Captured = 0;
-    private int time;
+    //private int time;
     private int Co2ConsumptionPerYear;
     private LocalDate dateAdded;
     private LocalDate dateOfLastWater;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         configureNextButton();
+        configureWaterButton();
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
@@ -98,6 +103,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void configureWaterButton() {
+        Button waterButton = (Button) findViewById(R.id.waterButton);
+        waterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dateOfLastWater = LocalDate.now();
+                dateOfNextWater = setDateOfNextWater(dateOfLastWater, incrementer);
+                long mProgressStatusLong = ChronoUnit.DAYS.between(currentDate, dateOfNextWater);
+                mProgressStatus = (int) mProgressStatusLong;
+                mProgressBar.setProgress(mProgressStatus);
+                updateDaysLeft(currentDate, dateOfNextWater);
+            }
+        });
+    }
 
     private void configureNextButton() {
         Button nextButton = (Button) findViewById(R.id.nextButton);
