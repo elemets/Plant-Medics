@@ -54,20 +54,20 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
 
-        if (plantResultsActivity.plantInfo == "Tree") {
+        if (plantType == "Tree") {
             incrementer = 7;
             Co2ConsumptionPerYear = 48; // how much co2 is absorbed in pounds every year
         }
 
-        if (plantResultsActivity.plantInfo == "dracaena") {
-            incrementer = 6;
-            Co2ConsumptionPerYear = 18;
-        }
-
-        if (plantResultsActivity.plantInfo == "") {
-            incrementer = 5;
-            Co2ConsumptionPerYear = 22;
-        }
+//        if (plantResultsActivity.plantInfo == "dracaena") {
+//            incrementer = 6;
+//            Co2ConsumptionPerYear = 18;
+//        }
+//
+//        if (plantResultsActivity.plantInfo == "Sida") {
+//            incrementer = 5;
+//            Co2ConsumptionPerYear = 22;
+//        }
 
         // dateAdded = setDate(16, 1, 2019);
         dateOfLastWater = setDate(14, 11,2019);
