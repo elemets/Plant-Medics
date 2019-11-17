@@ -19,6 +19,7 @@ import android.widget.Toast;
 import android.Manifest;
 
 import java.lang.*;
+import java.sql.*;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,6 +46,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        try {
+            Class.forName("con.mysql.jbc.Driver").newInstance();
+            Connection conn = DriverManager.getConnection("jdbc:mysql://bushboys.caeqszm3zbab.eu-west-2.rds.amazonaws.com", "admin", "hushboys123");
+            PreparedStatement statement = conn.prepareStatement("SELECT first_name FROM users WHERE userID = 1");
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                System.out.println("Hello here is some information" + result.getString("first_name"));
+                //customerInfo = customerInfo + result.getString("name") + "&" + result.getString("C_ID") + "&" + result.getString("address") + "&" + result.getString("email");
+            }
+        } catch (Exception exc) {
+            System.out.println(exc.getMessage());
+        }
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -75,10 +91,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.i("Location Info", "No location :(");
 
         }
-
-
-
-
 
     }
 
